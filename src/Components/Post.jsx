@@ -14,7 +14,8 @@ import {
 
 
 
-const Post = () => {
+const Post = () => { 
+    
     return (
         <Card  sx={{ margin: 5 }}>
             <CardHeader
