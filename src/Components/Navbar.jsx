@@ -25,6 +25,8 @@ const Search = styled("div")(({ theme }) => ({
     color:"#212121",
 
 
+    
+
 }))
 const Icons = styled("Box")(({ theme }) => ({
     display: "none",

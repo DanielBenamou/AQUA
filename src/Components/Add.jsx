@@ -34,9 +34,9 @@ const Add  = () => {
     const [open, setOpen] = useState(false)
     return (
         <>
-            <Tooltip onClick={(e) => setOpen(true)} title="Delete" sx={{ position: "fixed", bottom: 20, ml: 3, left: { xs: "calc(50% - 25px)", md: 30 } }}>
-                <Fab color="#333D79FF" aria-label="add">
-                    <AddIcon color='primary'/>
+            <Tooltip onClick={(e) => setOpen(true)} title="Add" sx={{ position: "fixed", bottom: 20, ml: 3, left: { xs: "calc(50% - 25px)", md: 30 } }}>
+                <Fab bgcolor="success" aria-label="add">
+                    <AddIcon/>
                 </Fab>
             </Tooltip>
             <StyledModal
