@@ -14,16 +14,15 @@ import {
 
 
 
-const Post = () => { 
-      
-
-    
+const Post = (props) => { 
+      const {item} = props;
+      const {item2} = props;
     return (
         <Card  sx={{ margin: 5 }}>
             <CardHeader
                 avatar={
-                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-                        R
+                    <Avatar sx={{ bgcolor: "black" }} aria-label="recipe">
+                        
                     </Avatar>
                 }
                 action={
@@ -42,7 +41,10 @@ const Post = () => {
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, a pariatur. Architecto, error. Dicta debitis dolorem corrupti aspernatur error saepe.
+                        {item}
+                </Typography>
+                <Typography variant="body3" fontSize={"15px"} mt={"15px"} position={"absolute"} color="text.secondary">
+                        {item2}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
@@ -58,6 +60,8 @@ const Post = () => {
             </CardActions>
         </Card>
     )
-};
+}
+    
+
 
 export default Post;

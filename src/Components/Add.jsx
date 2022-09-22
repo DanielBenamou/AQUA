@@ -18,6 +18,8 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
+
+
 const StyledModal = styled(Modal)({
     display: "flex",
     alignItems: "center",
@@ -30,13 +32,35 @@ const UserBox = styled(Box)({
     marginBottom: "4px"
 })
 
-const Add  = () => {
+const Add = (props) => {
+const {setItem} = props;
+
+
+const initialFormData = Object.freeze({
+text: "",
+date: "",
+});
+const [formData, setFormData] = useState(initialFormData);
+const handleChange = (e) => {
+
+    setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+    });
+};
+const handleSubmit = () => {
+    const post = {text:formData.text,id:"0",date:new Date().toLocaleString().split(",").join(" / ")};
+    setItem(post);
+    setOpen(false);
+}
+
+
     const [open, setOpen] = useState(false)
     return (
         <>
             <Tooltip onClick={(e) => setOpen(true)} title="Add" sx={{ position: "fixed", bottom: 20, ml: 3, left: { xs: "calc(50% - 25px)", md: 30 } }}>
                 <Fab bgcolor="success" aria-label="add">
-                    <AddIcon/>
+                    <AddIcon />
                 </Fab>
             </Tooltip>
             <StyledModal
@@ -45,7 +69,7 @@ const Add  = () => {
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <Box 
+                <Box
                     width={400}
                     height={280}
                     bgcolor={"background.default"}
@@ -63,13 +87,15 @@ const Add  = () => {
                         >John Doe
                         </Typography>
                     </UserBox>
-                    <TextField  className='input1'
+                    <TextField className='input1'
                         sx={{ width: "100%" }}
                         id="standard-multiline-static"
                         multiline
                         rows={3}
                         placeholder="What's on your mind ?"
                         variant="standard"
+                        onChange={handleChange}
+                        name="text"
                     />
                     <Stack
                         direction="row"
@@ -83,17 +109,19 @@ const Add  = () => {
                         <PersonAddIcon color="error" />
                     </Stack>
                     <ButtonGroup fullWidth variant="contained" aria-label="outlined primary button group">
-                        <Button className='newBtn'>Post</Button>
+                        <Button onClick={handleSubmit} > Post   </Button>
                         <Button sx={{ width: "100px" }}>
 
-                            <CalendarMonthIcon />
+                            <CalendarMonthIcon/>
                         </Button>
                     </ButtonGroup>
+                    <Typography>
+                    </Typography>
                 </Box>
             </StyledModal>
 
 
-            
+
         </>
     )
 }

@@ -115,7 +115,6 @@ const RightBar = () => {
                         />
                     </ListItem>
                 </List>
-                );
             </Box>
         </Box>
     )
